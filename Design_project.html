@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="d3-tip.js"></script>
+    <title>Project</title>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: #FFFFFF;
+        }
+
+        .no-dot{
+            display: none;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover, .offcanvas a:focus{
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 60px;
+            height: 28px;
+            padding: 2px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .d3-tip {
+            line-height: 1.5;
+            font-weight: normal;
+            font-family:"avenir next", Arial, sans-serif;
+            padding: 6px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #FFA500;
+            border-radius: 1px;
+            pointer-events: none;
+        }
+
+        #a1{
+            color: black;
+        }
+        #a2{
+            color: red;
+            line-height: 40%;
+        }
+        .mySlides{
+            display: none;
+        }html,body{margin: 0;padding: 0}
+
+
+    </style>
+
+</head>
+<body>
+<div id="mySidenav" class="sidenav" >
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="sidemenu"  id="0" href="#">IND Vs PAK</a>
+    <a class="sidemenu" id="1" href="#">IND Vs AUS</a>
+    <a class="sidemenu" id="2" href="#">NZ Vs PAK</a>
+    <a class="sidemenu" id="3" href="#">IND Vs SA</a>
+    <a class="sidemenu" id="4" href="#">BAN Vs PAK</a>
+    <a class="sidemenu" id="5" href="#">SL Vs AUS</a>
+    <a class="sidemenu" id="6" href="#">IND Vs ENG</a>
+    <a class="sidemenu" id="7" href="#">NZ Vs SA</a>
+    <a class="sidemenu" id="8" href="#">SL Vs BAN</a>
+    <a class="sidemenu" id="9" href="#">AUS Vs PAK</a>
+    <a class="sidemenu" id="10" href="#">NZ Vs ENG</a>
+    <a class="sidemenu" id="11" href="#">PAK Vs SL</a>
+    <a class="sidemenu" id="12" href="#">SA Vs ENG</a>
+    <a class="sidemenu" id="13" href="#">BAN Vs AUS</a>
+    <a class="sidemenu" id="14" href="#">NZ Vs IND</a>
+    <a class="sidemenu" id="15" href="#">BAN Vs SA</a>
+    <a class="sidemenu" id="16" href="#">NZ Vs SL</a>
+    <a class="sidemenu" id="17" href="#">IND Vs PAK</a>
+    <a class="sidemenu" id="18" href="#">ENG Vs AUS</a>
+    <a class="sidemenu" id="19" href="#">SL Vs KEN</a>
+    <a class="sidemenu" id="20" href="#">ENG Vs ZIM</a>
+    <a class="sidemenu" id="21" href="#">WI Vs BAN</a>
+    <a class="sidemenu" id="22" href="#">AUS Vs ZIM</a>
+    <a class="sidemenu" id="23" href="#">PAK Vs SCO</a>
+    <a class="sidemenu" id="24" href="#">KEN Vs NZ</a>
+    <a class="sidemenu" id="25" href="#">WI Vs SA</a>
+
+
+</div>
+<span style="font-size:30px;cursor:pointer;color: #800000" onclick="openNav()">&#9776; Match List</span>
+<h2 align="center" style="color: brown">Data Visualization</h2>
+
+<h3 align="center" style="color: darkblue">Umang Khodakiya</h3>
+<!--<h3 align="center">Project: Data Visualization about Cricket T-20 worldcup 2007. </h3>-->
+
+<h2 id="a1" align="center"><b><i>ICC WORLD TWENTY 20 </i></b></h2>
+<h4 id="a2" align="center"><b>SOUTH AFRICA 2007</b></h4>
+<div align="right" style="max-width: 500px;margin-left: 350px">
+    <img class="mySlides" src="flag/abc.png">
+    <img class="mySlides" src="flag/ind.png">
+    <img class="mySlides" src="flag/aus.png">
+    <img class="mySlides" src="flag/eng.png">
+    <img class="mySlides" src="flag/sl.jpg">
+    <img class="mySlides" src="flag/ban.png">
+    <img class="mySlides" src="flag/ken.png">
+    <img class="mySlides" src="flag/sa.jpg">
+    <img class="mySlides" src="flag/scot.png">
+    <img class="mySlides" src="flag/pak.jpg">
+    <img class="mySlides" src="flag/nz.jpg">
+    <img class="mySlides" src="flag/wi.png">
+    <img class="mySlides" src="flag/zim.jpg">
+</div>
+<script>
+    var myIndex = 0;
+    pics_slide();
+
+    function pics_slide() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(pics_slide, 2000);
+    }
+</script>
+<h1 style="margin-left: 250px;color: #800000">Venues of match played in South Africa </h1>
+<div id="southAfrica" style="margin-left: 450px;margin-top: -100px"></div>
+<h1 style="margin-left: 250px; color: #800000">Match Progression with Fall of Wickets</h1>
+<p align="center">The below graph depicts about the total runs scored by both the teams and fall of wickets of both the teams over the progression of the match.</p>
+    <p align="center">The total runs scored are denoted by line chart while the circle shows the fall of wickets of each team.</p>
+<div id="TrendLine" style="margin-left: 270px"></div>
+<div id="graph" style="margin-left: 200px"></div>
+
+<h1 style="margin-left: 250px; color: #800000">Runs Scored by Teams</h1>
+<p align="center">The grouped bar chart shown below shows the periodically comparison of runs by overs.As there is total of 20 overs,</p>
+<p align="center"> there is periodic comparison during the four periods- 1-4 overs,5-8 overs,9-12 overs, 13-16 overs and 17-20 overs respectively. </p>
+<div style="width: 1200px; height: 4px; margin-left: 50px"></div>
+<div id="thirdChart" style="margin-left: 270px"></div>
+
+<script src="design_project.js"></script>
+</body>
+</html>
